@@ -16,7 +16,7 @@ SmartSched/
 
 #STEPS TP CREATE VIRTUAL ENVIRONMENT
 On terminal run command: 
-pip install flask
+pip install -r requirements.txt
 python -m venv venv
 
 To activate virtual env: venv\Scripts\activate
