@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartSched - Intelligent Timetable Generator</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header class="animate__animated animate__fadeInDown">
+            <h1>Smart<span>Sched</span></h1>
+            <p>Generate optimal timetables with just a click!</p>
+        </header>
+
+        <main>
+            <div class="input-section animate__animated animate__fadeInLeft">
+                <h2>Configuration</h2>
+                
+                <div class="form-group">
+                    <label for="className">Class/Course Name</label>
+                    <input type="text" id="className" placeholder="e.g. Computer Science 2023">
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="lecturesPerDay">Lectures per Day</label>
+                        <input type="number" id="lecturesPerDay" min="1" max="10" value="6">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="lectureDuration">Lecture Duration (minutes)</label>
+                        <input type="number" id="lectureDuration" min="30" max="120" value="45">
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="startTime">First Lecture Starts At</label>
+                        <input type="time" id="startTime" value="09:00">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="breakAfter">Break After Lecture #</label>
+                        <input type="number" id="breakAfter" min="1" max="5" value="3" placeholder="Default: 3">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="breakDuration">Break Duration (minutes)</label>
+                        <input type="number" id="breakDuration" min="10" max="60" value="30">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="numClasses">Number of Classes (optional)</label>
+                    <input type="number" id="numClasses" min="1" max="5" value="1">
+                    <div id="classNamesContainer"></div>
+                </div>
+            </div>
+
+            <div class="teachers-section animate__animated animate__fadeInRight">
+                <h2>Teachers & Subjects</h2>
+                <div id="teachersContainer">
+                    <div class="teacher-entry">
+                        <input type="text" class="teacher-name" placeholder="Teacher Name">
+                        <input type="text" class="teacher-subjects" placeholder="Subjects (comma separated)">
+                        <button class="remove-teacher">×</button>
+                    </div>
+                </div>
+                <button id="addTeacher" class="btn-secondary">+ Add Teacher</button>
+            </div>
+
+            <div class="actions animate__animated animate__fadeInUp">
+                <button id="generateBtn" class="btn-primary">Generate Timetable</button>
+                <button id="resetBtn" class="btn-secondary">Reset</button>
+            </div>
+        </main>
+
+        <div id="results" class="results-section hidden animate__animated animate__fadeIn">
+            <h2>Generated Timetables</h2>
+            <div id="timetablesContainer"></div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
